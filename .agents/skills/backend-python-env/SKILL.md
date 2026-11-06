@@ -32,3 +32,4 @@ Always invoke the virtual environment python using quotes and the call operator 
 # Pip package operations inside virtualenv
 & "d:\Axinix Projects\Billing-ERP\backend\.venv\Scripts\python.exe" -m pip <pip_command>
 ```
+
