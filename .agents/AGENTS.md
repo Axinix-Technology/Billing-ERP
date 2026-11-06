@@ -1,0 +1,16 @@
+# SACRED RULE: Scalable Anti-Hardcode Architecture & No Temporary Patches (ZERO TOLERANCE)
+
+## Purpose
+Enforces absolute, uncompromising long-term platform stability over quick temporary patches across all backend and frontend tasks for Billing-ERP. This rule is SACRED and MANDATORY WITHOUT EXCEPTION.
+
+## Uncompromising Behavioral Laws
+1. **SACRED LAW: Zero Ad-Hoc `if` Checks & Zero Hardcoding**: NEVER propose, write, or accept ad-hoc `if` checks in application code that attempt to decide business logic, access, or feature availability on behalf of the engine. Do not define `if` checks to guess or pre-resolve permissions—let the Populate Engine, database registries, and schema contracts resolve execution paths declaratively.
+2. **SACRED LAW: Schema Single Source of Truth**: Security capabilities, role permissions, and access controls MUST be governed strictly by database schema flags (e.g. `Role.is_superadmin` / `User.is_superadmin` boolean properties), dynamic access policies, or environment configurations — NEVER hardcoded string titles or hardcoded IDs.
+3. **SACRED LAW: Root Cause & Scalability First**: Before writing any line of code, analyze the underlying architecture to design the most scalable, robust, anti-hardcode solution. Always use Planning Mode for structural changes.
+4. **SACRED LAW: Clean Policy Execution**: In policy validation, engine layers, middleware, and services, if `user.is_superadmin` is `True`, immediately bypass policy checks cleanly. Otherwise, evaluate dynamic policy rules cleanly without redundant role-id matching or string heuristics.
+5. **SACRED LAW: Zero Role-Scoping on Models (Multi-Tenant Architecture)**: Any newly implemented or existing model MUST NEVER be restricted by hardcoding role string title comparisons (e.g. `if role == 'Manager'` or `allowedRoles = [...]`). Access control is governed strictly by the dynamic Policy Engine / Services.
+6. **SACRED LAW: Living Knowledge Brain with Alphabetical Indexing**: Every update, component, concept, or fix must be documented in `knowledge_brain/`. Maintain strict alphabetical order in `knowledge_brain/INDEX.md` for fast scanning and retrieval.
+7. **SACRED LAW: Prohibition of Redundant Routers & Controllers (Populate-Helper + Service First)**: The Populate Engine (`/api/populate/`) handles all CRUD, filtering, sorting, pagination, and multi-relational queries. Custom business logic belongs in domain services (`services.py`). Routers/controllers are ONLY permitted for capabilities that cannot physically run in populate (binary file streaming like PDF downloads, auth handshakes, webhooks).
+8. **SACRED LAW: Mandatory Branch Isolation & Version Increment**: Never work, commit, or push directly on `main`. Always work on dedicated branches (`feature/`, `refactor/`, `bugfix/`).
+9. **SACRED LAW: Mandatory API Request Audit Logging**: Every API request that enters the system must be traceably recorded in the database with request correlation ID (`X-Request-ID`), client IP, user agent, action, path, and sanitized changes.
+10. **SACRED LAW: Pure Page-Only `src/pages` Routing Integrity**: In the Frontend (`src/pages/`), ONLY files that represent true top-level page routes may exist. All reusable components, widgets, modals, and tables must live strictly in `src/components/`.
