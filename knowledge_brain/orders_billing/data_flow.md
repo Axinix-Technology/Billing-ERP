@@ -61,3 +61,4 @@
 - **API Request:** `GET /api/orders/<id>/pdf`
 - **Backend Handler:** `backend/billing/views.py:download_invoice_pdf`
 - **Logic:** Queries order with items, formats 80mm thermal receipt using ReportLab, and streams binary `application/pdf` with `Content-Disposition: inline; filename=invoice-<bill_number>.pdf`.
+

@@ -19,3 +19,4 @@
 | `Product.price` field | `orders_billing:OrderItem.unit_price` | Source of truth for item price | Ensure existing order totals remain unchanged (captured historically) |
 | `Product.is_available` flag | `frontend/src/pages/POSPage.jsx` | Filter criteria | Test that unavailable products do not appear on POS order grid |
 | `Category.name` or deletion | `Product.category_id` | Foreign key relationship | Verify CASCADE or PROTECT integrity; categories cannot be deleted with active products |
+

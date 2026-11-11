@@ -44,3 +44,4 @@
 - **Trigger:** Admin clicks "Export PDF" with date range inputs.
 - **API Request:** `GET /api/reports/pdf?startDate=2026-11-01&endDate=2026-11-06`
 - **Backend Logic:** Aggregates orders between `startDate` and `endDate`, builds tabular summary using ReportLab, and streams binary `application/pdf`.
+

@@ -52,3 +52,4 @@ Whenever adding or updating Django backend models, business logic services, or e
 
 ## Common failure modes
 - Failing to import `services.py` inside `apps.py` `ready()` results in `Model not registered` errors.
+

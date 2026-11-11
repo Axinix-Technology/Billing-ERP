@@ -19,3 +19,4 @@
 | `User` model schema | `orders_billing:Order.cashier` | ForeignKey relationship | Database migration integrity, cashier order attribution |
 | `Role.is_superadmin` logic | `catalog_products`, `reports_analytics` | Guarding administrative workflows | Test that cashier accounts cannot access management or reports |
 | JWT Token Payload format | `frontend/src/context/AuthContext.jsx` | Parsing user profile and token | Verify login and page refresh keep user session intact |
+

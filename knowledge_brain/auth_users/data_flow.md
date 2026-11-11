@@ -39,3 +39,4 @@
   - Missing fields: `400 Bad Request` with message "Username and password are required".
   - Invalid credentials: `401 Unauthorized` with message "Invalid username or password".
   - Password inputs are never echoed back.
+

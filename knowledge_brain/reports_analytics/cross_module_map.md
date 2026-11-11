@@ -14,3 +14,4 @@
 |---|---|---|---|
 | `Order` payment method choices | `ReportsPage.jsx:paymentBreakdown` | Displaying breakdown percentages | Test chart rendering when new payment methods are used |
 | `OrderItem.product_name` | Top selling products table | Displays top products by name | Verify aggregation groups correctly even if product is deleted |
+

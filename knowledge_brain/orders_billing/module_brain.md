@@ -25,8 +25,8 @@ Manages POS shopping cart checkout, atomic database order persistence, sequentia
 - Invoice View / Modal: `frontend/src/components/InvoiceModal.jsx` (to be migrated to dedicated page per Commercial Engineering Rules)
 
 ## 6. Main User Roles and Permissions
-- `cashier`: Can create orders and view recent orders for billing.
-- `admin`: Can view all orders, audit cashier performance, and void/re-print invoices.
+- `cashier`: Governed by DB-backed `AccessPolicy` (`order`: `["read", "create"]`, `order_item`: `["read"]`). Cannot run `report`/`statistics`/`aggregate` (requires `order.report` capability), `update`, or `delete` on orders (`403`).
+- `admin`: Superadmin (`is_superadmin = True`). Can view/manage all orders, audit cashier performance, run `/api/populate/report/order`, and re-print invoices.
 
 ## 7. Main Workflows and Business Rules
 1. **Checkout Calculation:** Subtotal is derived from authoritative product prices.
@@ -64,4 +64,5 @@ Manages POS shopping cart checkout, atomic database order persistence, sequentia
 - [Axinix Core Integration & Service Declaration](../engine_core/skills/axinix_core_integration.md)
 
 ## 13. Last Verified Date
-- 2026-11-06 (Initial Axinix Django Core specification).
+- 2026-11-11 (Updated with `PolicyEngine` Tier-2 ABAC + explicit `order.report` capability enforcement).
+

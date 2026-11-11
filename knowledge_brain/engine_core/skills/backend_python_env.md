@@ -39,3 +39,4 @@ Run `& "backend/.venv/Scripts/python.exe" --version` and `manage.py check`.
 
 ## Common failure modes
 - Invoking `python manage.py` without specifying virtualenv path uses system Python which lacks dependencies.
+

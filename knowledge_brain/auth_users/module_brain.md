@@ -24,14 +24,19 @@ Manages user authentication, credentials validation, dual token & JWT sessions, 
 - Top Navbar User Profile: `frontend/src/components/Navbar.jsx`
 
 ## 6. Main User Roles and Permissions
-- `admin`: Superadmin role with full privileges to manage products, view reports, manage cashiers, and configure settings (`is_superadmin = True`).
-- `cashier`: Operational role with permissions limited to POS checkout and order entry.
+- `admin`: Superadmin role with full privileges to manage products, view reports, manage cashiers, and configure settings (`is_superadmin = True`). Bypasses Tier-2 policy denial automatically.
+- `cashier`: Operational role governed strictly by DB-backed `populate_core.models.AccessPolicy` and `Capability` rows seeded via `seed_db`:
+  - `category`: `["read"]`
+  - `product`: `["read"]`
+  - `order`: `["read", "create"]` (`report`/`update`/`delete` fail closed with `403` unless explicitly granted `order.report` capability or corresponding action)
+  - `order_item`: `["read"]`
 
 ## 7. Main Workflows and Business Rules
 1. Operator submits username and password on `LoginPage.jsx`.
 2. Backend authenticates credentials, returns JWT token and sanitized user profile (`id`, `username`, `name`, `role`).
 3. Frontend stores token in `localStorage('teashop_token')` and mounts `AuthContext`.
 4. Role checks determine navigation access to `/manage` and `/reports` (`isAdmin = role === 'admin'`).
+5. All `/api/populate/` requests execute `RoleService` / `UserService` with `check_permission` returning `None`, deferring authorization strictly to `PolicyEngine` (fail-closed Tier-2 DB-backed `AccessPolicy` + `Capability`).
 
 ## 8. Important Validations and Edge Cases
 - Passwords must be hashed using strong algorithm (`bcrypt` / PBKDF2).
@@ -53,4 +58,5 @@ Manages user authentication, credentials validation, dual token & JWT sessions, 
 - [Axinix Core Integration & Service Declaration](../engine_core/skills/axinix_core_integration.md)
 
 ## 13. Last Verified Date
-- 2026-11-06 (Initial Axinix Django Core specification).
+- 2026-11-11 (Updated with DB-backed Tier-2 ABAC `AccessPolicy` & `Capability` seeding and fail-closed `PolicyEngine` delegation).
+

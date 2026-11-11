@@ -19,3 +19,4 @@
 | `Order.bill_number` format | Thermal invoice PDF & search | Primary search identifier | Verify receipt rendering and search by bill number |
 | `Order` financial calculation logic | `reports_analytics` | Revenue totals rely on accurate grand total | Test subtotal, tax, discount, and grand total math with edge cases |
 | `payment_method` options | `reports_analytics:paymentBreakdown` | Aggregates count and revenue by payment method | Test adding or updating payment methods reflects in report |
+
