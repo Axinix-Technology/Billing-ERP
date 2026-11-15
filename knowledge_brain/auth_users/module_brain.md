@@ -47,6 +47,10 @@ Manages user authentication, credentials validation, dual token & JWT sessions, 
 - Model: `backend/users/models.py:User`, `backend/users/models.py:Role`
 - Service: `backend/users/services.py:UserService`
 - Auth Views: `backend/users/views.py:LoginView`, `backend/users/views.py:ProfileView`
+- Management Commands:
+  - `seed_users` / `seed_user_credentials`: `backend/users/management/commands/seed_users.py` (Seeds demo and custom credentials with synchronized passwords and Tier-2 ABAC capabilities for frontend testing)
+  - `seed_db`: `backend/users/management/commands/seed_db.py` (Full catalog, categories, products, roles, and default accounts)
+- Documentation Guide: [User Credentials & Seed Setup Guide](seed_users_guide.md)
 
 ## 10. Dependencies on Other Modules
 - Core Populate Kernel (`populate_core`) for ABAC checks and user session context.

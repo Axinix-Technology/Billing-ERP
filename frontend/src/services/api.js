@@ -1,4 +1,4 @@
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'http://localhost:8000/api';
 
 function getAuthHeader() {
   const token = localStorage.getItem('teashop_token');
@@ -40,7 +40,7 @@ export const api = {
 
   // Products & Categories
   getCategories: () => request('/products/categories'),
-  getProducts: (categoryId = 'all', search = '') => 
+  getProducts: (categoryId = 'all', search = '') =>
     request(`/products?category_id=${categoryId}&search=${encodeURIComponent(search)}`),
   createProduct: (productData) => request('/products', { method: 'POST', body: JSON.stringify(productData) }),
   updateProduct: (id, productData) => request(`/products/${id}`, { method: 'PUT', body: JSON.stringify(productData) }),
