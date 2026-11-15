@@ -27,6 +27,7 @@ backend/.env.*
 !backend/.env.example
 frontend/.env.local
 frontend/.env.*.local
+frontend/.env
 
 # ------------------------------------------------------------------------------
 # Python & Django
